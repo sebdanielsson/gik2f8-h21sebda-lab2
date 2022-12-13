@@ -7,7 +7,6 @@ class Api {
 
     // Create
     async create(data) {
-        console.log("DEBUG: Adding task...");
         const JSONData = JSON.stringify(data);
 
         const request = new Request(this.url, {
@@ -51,7 +50,6 @@ class Api {
 
     // Update
     async update(id, data) {
-        console.log("DEBUG: Changing task...");
         const JSONData = JSON.stringify(data);
 
         const request = new Request(this.url + "/" + id, {

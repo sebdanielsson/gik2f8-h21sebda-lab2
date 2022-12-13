@@ -1,17 +1,5 @@
 "use strict";
 
-// Show loading spinner
-function showLoading() {
-    loadingSpinner.classList.remove("hidden");
-    console.log("showLoading");
-}
-
-// Hide loading spinner
-function hideLoading() {
-    loadingSpinner.classList.add("hidden");
-    console.log("hideLoading");
-}
-
 // Create new API instance
 const api = new Api("http://localhost:3000/tasks");
 
@@ -40,10 +28,7 @@ function validateForm(field) {
 }
 
 // Submit form
-taskForm.addEventListener("submit", onSubmit);
-
-function onSubmit(e) {
-    e.preventDefault();
+function addTaskButton() {
     if (titleValid) {
         const newTask = {
             title: taskForm.titleField.value,
@@ -61,8 +46,8 @@ function onSubmit(e) {
 function addTask(newTask) {
     api.create(newTask).then((task) => {
         if (task) {
-            renderTasks();
             clearForm();
+            renderTasks();
         }
     });
 }
@@ -146,48 +131,6 @@ function editTaskButton(id) {
                         console.log("Task updated successfully" + task);
                         renderTasks();
                         clearForm();
-                    }
-                });
-            };
-        }
-    });
-}
-
-// Update task form
-function updateTask(id) {
-    api.get(id).then((task) => {
-        if (task) {
-            taskForm.titleField.value = task.title;
-            taskForm.descriptionField.value = task.description;
-            taskForm.dueDateField.value = task.dueDate;
-            taskForm.updateButton.classList.add("hidden");
-            taskForm.cancelUpdateButton.classList.add("hidden");
-            taskForm.addButton.classList.remove("hidden");
-
-            taskForm.updateButton.onclick = () => {
-                const updatedTask = {
-                    title: taskForm.titleField.value,
-                    description: taskForm.descriptionField.value,
-                    dueDate: taskForm.dueDateField.value,
-                };
-
-                // Task updated successfully
-                api.update(id, updatedTask).then((task) => {
-                    if (task) {
-                        renderTasks();
-                        clearForm();
-                        taskForm.addButton.classList.remove("hidden");
-                        taskForm.submitButton.onclick = onSubmit;
-                        taskForm.cancelUpdateButton.remove();
-
-                        // Enable edit buttons
-                        const editButtons = document.querySelectorAll(".editButton");
-                        editButtons.forEach((button) => {
-                            button.disabled = false;
-                            button.classList.remove("cursor-not-allowed");
-                            button.classList.remove("bg-gray-400");
-                            button.classList.remove("hover:bg-gray-400");
-                        });
                     }
                 });
             };
