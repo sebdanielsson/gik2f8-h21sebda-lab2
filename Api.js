@@ -22,7 +22,7 @@ class Api {
             const results_data = await result.json();
             return results_data;
         } catch (error) {
-            return console.log(error);
+            return console.log("create()", error);
         }
     }
 
@@ -33,7 +33,7 @@ class Api {
             const results_data = await response.json();
             return results_data;
         } catch (error) {
-            return console.log(error);
+            return console.log("getAll()", error);
         }
     }
 
@@ -44,7 +44,7 @@ class Api {
             const results_data = await response.json();
             return results_data;
         } catch (error) {
-            return console.log(error);
+            return console.log("get()", error);
         }
     }
 
@@ -65,7 +65,7 @@ class Api {
             const results_data = await result.json();
             return results_data;
         } catch (error) {
-            return console.log(error);
+            return console.log("update()", error);
         }
     }
 
@@ -76,7 +76,7 @@ class Api {
                 method: "DELETE",
             }).then((response) => response);
         } catch (error) {
-            return console.log(error);
+            return console.log("remove()", error);
         }
     }
 }
