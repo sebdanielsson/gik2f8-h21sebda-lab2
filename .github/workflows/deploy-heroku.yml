@@ -8,7 +8,7 @@ on:
 
 jobs:
     deploy:
-        name: Deploy to Heroku.
+        name: Deploy to Heroku
         runs-on: ubuntu-22.04
         steps:
             - uses: actions/checkout@v3.1.0
@@ -19,3 +19,4 @@ jobs:
                   heroku_app_name: "gik2f8-lab2-todo"
                   heroku_email: ${{secrets.HEROKU_EMAIL}}
                   branch: main
+                  region: eu
