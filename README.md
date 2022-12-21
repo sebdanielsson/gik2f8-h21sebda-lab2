@@ -6,8 +6,11 @@
 
 ## Features
 
-* Light/Dark mode that respects your system preference
-* Loading spinner until API promise is fulfilled
+* Switch between system, dark and light color scheme
 * Build test on new PR
 * Automatic build and deploy on commit on main branch
-* Create dependency upgrade PR with renovate[bot] when new version is available
+* Automatic dependency upgrade PRs with renovate[bot]
+
+## Missing features
+
+* API authentication with OAuth
