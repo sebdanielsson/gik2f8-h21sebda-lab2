@@ -8,6 +8,12 @@
         <link rel="apple-touch-icon" href="./favicon.png" />
         <link href="./output.css" rel="stylesheet" />
         <title>To-do</title>
+        <style>
+            @font-face {
+                font-family: "Wendy One";
+                src: url("./WendyOne-Regular.ttf");
+            }
+        </style>
         <script>
             if (localStorage.getItem("theme") === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
                 document.documentElement.classList.add("dark");

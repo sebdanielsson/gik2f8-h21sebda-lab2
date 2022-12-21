@@ -978,12 +978,6 @@ video {
   transition-duration: 150ms;
 }
 
-@font-face {
-  font-family: "Wendy One";
-
-  src: url("./WendyOne-Regular.ttf");
-}
-
 .hover\:bg-rose-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(225 29 72 / var(--tw-bg-opacity));
