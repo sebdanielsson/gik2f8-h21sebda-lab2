@@ -8,7 +8,7 @@
         "start": "node app.js",
         "dev": "nodemon app.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "tailwindcss": "npx tailwindcss -o ./build/output.css",
+        "tailwindcss": "npx tailwindcss -i ./src/input.css -o ./build/output.css",
         "build": "mkdir -p ./build; ls -1 ./src/ | grep -v ^input.css | grep -v ^.DS_Store | xargs -I{} mv src/{} ./build;cp README.md ./build/README.md;"
     },
     "author": {
