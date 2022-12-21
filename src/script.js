@@ -95,7 +95,9 @@ function renderTasks() {
             if (tasks && tasks.length === 0) {
                 taskList.innerHTML = `<li class="text-center py-3 border-t border-rose-200"><span class="text-2xl">Nothing to do </span><span class="text-4xl">🤷‍♀️</span></li>`;
             } else if (tasks && tasks.length > 0) {
-                taskList.insertAdjacentHTML("beforeend", renderTasksHTML(task));
+                tasks.forEach((task) => {
+                    taskList.insertAdjacentHTML("beforeend", renderTasksHTML(task));
+                });
             } else {
                 taskList.innerHTML = `
                 <li class="flex text-center py-3 border-t border-rose-200">
