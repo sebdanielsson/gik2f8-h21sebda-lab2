@@ -1,9 +1,27 @@
 {
-    "devDependencies": {
-        "tailwindcss": "3.2.4"
-    },
+    "name": "gik2f8-lab2",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "index.js",
     "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
         "tailwindcss": "npx tailwindcss -o ./build/output.css",
         "build": "mkdir -p ./build; ls -1 ./src/ | grep -v ^input.css | grep -v ^.DS_Store | xargs -I{} mv src/{} ./build;cp README.md ./build/README.md;"
+    },
+    "author": {
+        "name": "Sebastian Danielsson",
+        "email": "sebastian.danielsson@proton.me",
+        "url": "https://github.com/SebDanielsson"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20",
+        "tailwindcss": "3.2.4"
     }
 }
