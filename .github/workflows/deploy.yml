@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to GitHub
 
 on:
     push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
     deploy:
-        name: Deploy
+        name: Deploy to GitHub
         runs-on: ubuntu-22.04
         steps:
             - uses: actions/checkout@v3.1.0
@@ -21,19 +21,8 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
-            - name: Tailwind build
-              run: npm run tailwindcss
-
             - name: Build website
               run: npm run build
-
-            - name: Deploy to Heroku
-              uses: akhileshns/heroku-deploy@v3.12.12
-              with:
-                  heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-                  heroku_app_name: "gik2f8-lab2-todo"
-                  heroku_email: ${{secrets.HEROKU_EMAIL}}
-                  branch: main
 
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3.9.0
