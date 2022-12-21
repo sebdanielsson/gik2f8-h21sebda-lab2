@@ -20,17 +20,21 @@ const themeLight = document.getElementById("theme-light");
 const themeDark = document.getElementById("theme-dark");
 
 themeSystem.addEventListener("click", () => {
-    document.documentElement.classList.remove("dark");
-    localStorage.removeItem("theme");
+    if (prefersDarkMode.matches) {
+        document.documentElement.classList.add("dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.removeItem("theme");
+    }
 });
 
 themeLight.addEventListener("click", () => {
-    document.body.classList.remove("dark");
+    document.documentElement.classList.remove("dark");
     localStorage.setItem("theme", "light");
 });
 
 themeDark.addEventListener("click", () => {
-    document.body.classList.add("dark");
+    document.documentElement.classList.add("dark");
     localStorage.setItem("theme", "dark");
 });
 
@@ -67,7 +71,7 @@ function addTaskButton() {
         const newTask = {
             title: taskForm.titleField.value,
             description: taskForm.descriptionField.value,
-            dueDate: taskForm.dueDateField.value,
+            dueDate: taskForm.dueDateField.value.replace("T", " "),
             completed: false,
         };
         addTask(newTask);
@@ -95,7 +99,26 @@ function renderTasks() {
             if (tasks && tasks.length === 0) {
                 taskList.innerHTML = `<li class="text-center py-3 border-t border-rose-200"><span class="text-2xl">Nothing to do </span><span class="text-4xl">🤷‍♀️</span></li>`;
             } else if (tasks && tasks.length > 0) {
-                tasks.forEach((task) => {
+                // Sort tasks by due date
+                tasks.sort((a, b) => {
+                    const dateA = new Date(a.dueDate);
+                    const dateB = new Date(b.dueDate);
+                    if (dateA < dateB) {
+                        return -1;
+                    }
+                    if (dateA > dateB) {
+                        return 1;
+                    }
+                    return 0;
+                });
+
+                // Sort tasks by completed
+                const completedTasks = tasks.filter((task) => task.completed);
+                const incompleteTasks = tasks.filter((task) => !task.completed);
+                incompleteTasks.forEach((task) => {
+                    taskList.insertAdjacentHTML("beforeend", renderTasksHTML(task));
+                });
+                completedTasks.forEach((task) => {
                     taskList.insertAdjacentHTML("beforeend", renderTasksHTML(task));
                 });
             } else {
@@ -166,7 +189,7 @@ function editTaskButton(id) {
                 const updatedTask = {
                     title: taskForm.titleField.value,
                     description: taskForm.descriptionField.value,
-                    dueDate: taskForm.dueDateField.value,
+                    dueDate: taskForm.dueDateField.value.replace("T", " "),
                 };
 
                 // Show update button and cancel button, hide add button
@@ -210,9 +233,7 @@ function updateCompletion(id, checkbox) {
                 completed: checkbox.checked,
             };
             api.update(id, updatedTask).then((task) => {
-                if (task) {
-                    renderTasks();
-                }
+                renderTasks();
             });
         }
     });
