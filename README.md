@@ -3,6 +3,7 @@
 ## Homepage
 
 <https://sebdanielsson.github.io/gik2f8-h21sebda-lab2>
+<https://gik2f8-lab2-todo.herokuapp.com>
 
 ## Features
 
