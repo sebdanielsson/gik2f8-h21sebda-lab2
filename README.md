@@ -15,4 +15,5 @@
 
 ## Missing features
 
+* Responsive layout (Mobile support)
 * API authentication with OAuth
