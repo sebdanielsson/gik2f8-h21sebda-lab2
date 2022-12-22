@@ -31,20 +31,7 @@ app.get("/", (req, res) => {
 // Get all tasks
 app.get("/tasks", async (req, res) => {
     try {
-        let tasks;
-        try {
-            tasks = await fs.readFile("./tasks.json", "utf-8");
-        } catch (err) {
-            if (err.code === "ENOENT") {
-                // File does not exist, create it
-                const fd = await fs.promises.open("./tasks.json", "w");
-                await fd.close();
-                tasks = "[]";
-            } else {
-                // Other error, throw again
-                throw err;
-            }
-        }
+        const tasks = await fs.readFile("./tasks.json", "utf-8");
         res.send(JSON.parse(tasks));
     } catch (err) {
         console.log(err);

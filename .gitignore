@@ -137,5 +137,3 @@ src/output.css
 .hintrc
 .vscode/
 
-# appdata
-tasks.json
