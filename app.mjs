@@ -39,7 +39,7 @@ app.get("/tasks", async (req, res) => {
                 // File does not exist, create it
                 const fd = await fs.open("./tasks.json", "w");
                 await fd.close();
-                tasks = "[]";
+                await fs.writeFile("./tasks.json", "[]");
             } else {
                 // Other error, throw again
                 throw err;
