@@ -37,7 +37,7 @@ app.get("/tasks", async (req, res) => {
         } catch (err) {
             if (err.code === "ENOENT") {
                 // File does not exist, create it
-                const fd = await fs.promises.open("./tasks.json", "w");
+                const fd = await fs.open("./tasks.json", "w");
                 await fd.close();
                 tasks = "[]";
             } else {
