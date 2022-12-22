@@ -39,7 +39,7 @@ themeDark.addEventListener("click", () => {
 });
 
 // Create new API instance
-const api = new Api("https://gik2f8-lab2-todo-backend.herokuapp.com/tasks");
+const api = new Api("https://gik2f8-lab2-todo.herokuapp.com/tasks");
 
 // Load tasks on page load
 window.addEventListener("load", () => {
