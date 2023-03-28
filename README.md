@@ -8,12 +8,26 @@
 
 ## Features
 
-* Switch between system, dark and light color scheme
-* Build test on new PR
-* Automatic build and deploy on commit on main branch
-* Automatic dependency upgrade PRs with renovate[bot]
+- Switch between system, dark and light color scheme
+- Build test on new PR
+- Automatic build and deploy on commit on main branch
+- Automatic dependency upgrade PRs with renovate[bot]
 
 ## Missing features
 
-* Responsive layout (Mobile support)
-* API authentication with OAuth
+- Responsive layout (Mobile support)
+- API authentication with OAuth
+
+## Usage
+
+Build
+
+```sh
+npm run build
+```
+
+Start
+
+```sh
+npm run start
+```

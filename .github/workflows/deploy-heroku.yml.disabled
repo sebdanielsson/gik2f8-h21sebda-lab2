@@ -1,22 +1,22 @@
 name: Deploy to Heroku
 
 on:
-    push:
-        branches:
-            - main
-    workflow_dispatch:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-    deploy:
-        name: Deploy to Heroku
-        runs-on: ubuntu-22.04
-        steps:
-            - uses: actions/checkout@v3.3.0
-            - name: Deploy to Heroku
-              uses: akhileshns/heroku-deploy@v3.12.12
-              with:
-                  heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-                  heroku_app_name: "gik2f8-lab2-todo"
-                  heroku_email: ${{secrets.HEROKU_EMAIL}}
-                  branch: main
-                  region: eu
+  deploy:
+    name: Deploy to Heroku
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "gik2f8-lab2-todo"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          branch: main
+          region: eu
