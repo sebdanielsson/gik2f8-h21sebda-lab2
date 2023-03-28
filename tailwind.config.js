@@ -1,10 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-const { join } = require("path");
-module.exports = {
-    darkMode: "class", // 'media' or 'class'
-    content: [join(__dirname, "src/**/*.{html,js,ts,jsx,tsx}")],
-    theme: {
-        extend: {},
-    },
-    plugins: [],
+export default {
+  darkMode: "class",
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 };
