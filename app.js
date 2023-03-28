@@ -1,7 +1,5 @@
 import express from "express";
-// const express = require('express'); // commonjs module
 import fs from "fs/promises";
-// const fs = require('fs/promises'); // commonjs module
 const app = express();
 const port = process.env.PORT || 80;
 
