@@ -1,5 +1,8 @@
 import express from "express";
 import fs from "fs/promises";
+
+var escape = require('escape-html');
+
 const app = express();
 const port = process.env.PORT || 80;
 
@@ -42,7 +45,8 @@ app.get("/tasks", async (req, res) => {
     const tasks = await fs.readFile("./tasks.json", "utf-8");
     res.send(JSON.parse(tasks));
   } catch (err) {
-    console.log(err);
+    log("Exception occurred", err.stack);
+    res.status(500).send("Internal Server Error");
   }
 });
 
@@ -54,12 +58,13 @@ app.get("/tasks/:id", async (req, res) => {
     const task = currentTasks.find((task) => task.id == req.params.id);
 
     if (!task) {
-      res.status(404).send("Task id " + req.params.id + " not found.");
+      res.status(404).send("Task id " + escape(req.params.id) + " not found.");
     }
 
     res.send(task);
   } catch (err) {
-    res.status(500).send(err);
+    log("Exception occurred", err.stack);
+    res.status(500).send("Internal Server Error");
   }
 });
 
@@ -79,14 +84,15 @@ app.post("/tasks", async (req, res) => {
       newTaskId++;
     }
 
-    const newTask = { id: newTaskId, ...req.body };
+    const newTask = { id: newTaskId, ...escape(req.body) };
     const newList = currentTasks ? [...currentTasks, newTask] : [newTask];
 
     await fs.writeFile("./tasks.json", JSON.stringify(newList));
 
     res.send(newTask);
   } catch (err) {
-    res.status(500).send(err);
+    log("Exception occurred", err.stack);
+    res.status(500).send("Internal Server Error");
   }
 });
 
@@ -107,10 +113,11 @@ app.put("/tasks/:id", async (req, res) => {
 
       await fs.writeFile("./tasks.json", JSON.stringify(newList));
 
-      res.send(req.params.id);
+      res.send(escape(req.params.id));
     }
   } catch (err) {
-    res.status(500).send(err);
+    log("Exception occurred", err.stack);
+    res.status(500).send("Internal Server Error");
   }
 });
 
@@ -123,9 +130,10 @@ app.delete("/tasks/:id", async (req, res) => {
     } else {
       const newList = currentTasks.filter((task) => task.id != req.params.id);
       await fs.writeFile("./tasks.json", JSON.stringify(newList));
-      res.send("Task id " + req.params.id + " deleted.");
+      res.send("Task id " + escape(req.params.id) + " deleted.");
     }
   } catch (err) {
-    res.status(500).send(err);
+    log("Exception occurred", err.stack);
+    res.status(500).send("Internal Server Error");
   }
 });
