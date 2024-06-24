@@ -3,6 +3,15 @@ import fs from "fs/promises";
 const app = express();
 const port = process.env.PORT || 80;
 
+// Rate limiter
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+app.use(limiter);
+
 // Middleware
 app
   .use(express.json())
