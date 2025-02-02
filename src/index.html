@@ -23,18 +23,18 @@
         </script>
     </head>
 
-    <body class="grid place-items-center bg-gradient-to-t from-orange-400 to-rose-400">
+    <body class="grid place-items-center bg-linear-to-t from-orange-400 to-rose-400">
         <main class="flex flex-row m-4 w-full lg:11/12 md:w-8/12 sm:w-9/12 min-h-screen">
             <div class="flex flex-col gap-2 w-5/12 items-stretch p-4 rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
                 <!-- <h2 class="select-none text-rose-50 font-['Wendy_One'] text-4xl">Add task</h2> -->
                 <form id="taskForm" name="taskForm" class="flex flex-col gap-2">
-                    <input type="text" id="titleField" name="titleField" placeholder="New task" minlength="1" required class="h-12 select-none w-full block rounded-lg border p-4 text-base text-rose-400 dark:text-white bg-rose-50 border-rose-300 dark:border-opacity-40 placeholder-rose-300 dark:placeholder-rose-200 focus:outline-none focus:ring-1 focus:ring-rose-400 focus:ring-offset-1 ring-offset-rose-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" />
+                    <input type="text" id="titleField" name="titleField" placeholder="New task" minlength="1" required class="h-12 select-none w-full block rounded-lg border p-4 text-base text-rose-400 dark:text-white bg-rose-50 border-rose-300 dark:border-opacity-40 placeholder-rose-300 dark:placeholder-rose-200 focus:outline-hidden focus:ring-1 focus:ring-rose-400 focus:ring-offset-1 ring-offset-rose-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" />
                     <span id="titleWarning" class="hidden text-sm text-rose-900 dark:text-rose-100">Empty title is not allowed.</span>
-                    <textarea type="text" id="descriptionField" name="descriptionField" rows="8" class="h-48 select-none w-full block rounded-lg border p-4 text-base text-rose-400 dark:text-white bg-rose-50 border-rose-300 dark:border-opacity-40 placeholder-rose-300 dark:placeholder-rose-200 focus:outline-none focus:ring-1 focus:ring-rose-400 focus:ring-offset-1 ring-offset-rose-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" placeholder="Description"></textarea>
-                    <input type="datetime-local" id="dueDateField" name="dueDateField" class="leading-3 h-12 select-none w-full block rounded-lg border p-4 text-base text-rose-400 dark:text-white bg-rose-50 border-rose-300 dark:border-opacity-40 placeholder-rose-300 dark:placeholder-rose-200 focus:outline-none focus:ring-1 focus:ring-rose-400 focus:ring-offset-1 ring-offset-rose-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" placeholder="Due date" />
+                    <textarea type="text" id="descriptionField" name="descriptionField" rows="8" class="h-48 select-none w-full block rounded-lg border p-4 text-base text-rose-400 dark:text-white bg-rose-50 border-rose-300 dark:border-opacity-40 placeholder-rose-300 dark:placeholder-rose-200 focus:outline-hidden focus:ring-1 focus:ring-rose-400 focus:ring-offset-1 ring-offset-rose-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" placeholder="Description"></textarea>
+                    <input type="datetime-local" id="dueDateField" name="dueDateField" class="leading-3 h-12 select-none w-full block rounded-lg border p-4 text-base text-rose-400 dark:text-white bg-rose-50 border-rose-300 dark:border-opacity-40 placeholder-rose-300 dark:placeholder-rose-200 focus:outline-hidden focus:ring-1 focus:ring-rose-400 focus:ring-offset-1 ring-offset-rose-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" placeholder="Due date" />
                 </form>
                 <div id="submitFormContainer" class="flex flex-row gap-2 basis-auto">
-                    <button onclick="addTaskButton()" type="button" form="taskForm" id="addButton" name="addButton" class="w-full inline-flex items-center rounded-md border border-transparent bg-rose-500 px-4 py-3 text-sm font-medium text-white shadow-sm hover:bg-rose-600 focus:outline-none focus:ring-1 focus:ring-rose-400 focus:ring-offset-1 ring-offset-rose-400">
+                    <button onclick="addTaskButton()" type="button" form="taskForm" id="addButton" name="addButton" class="w-full inline-flex items-center rounded-md border border-transparent bg-rose-500 px-4 py-3 text-sm font-medium text-white shadow-xs hover:bg-rose-600 focus:outline-hidden focus:ring-1 focus:ring-rose-400 focus:ring-offset-1 ring-offset-rose-400">
                         <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
                         </svg>
@@ -67,7 +67,7 @@
                             </svg>
                         </span>
                     </button>
-                    <div id="dropdown" class="hidden group-hover:block absolute -translate-x-1/2 group-hover:text-white bg-white rounded dark:bg-[#2D221D]/80 backdrop-blur-lg backdrop-saturate-[0.85]">
+                    <div id="dropdown" class="hidden group-hover:block absolute -translate-x-1/2 group-hover:text-white bg-white rounded-sm dark:bg-[#2D221D]/80 backdrop-blur-lg backdrop-saturate-[0.85]">
                         <ul class="font-semibold text-sm text-gray-700 dark:text-gray-200">
                             <li>
                                 <a href="#" id="theme-system" class="flex items-center py-2 px-2 dark:hover:text-rose-400">
