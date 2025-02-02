@@ -48,7 +48,7 @@ window.addEventListener("load", () => {
 
 // Validate fields
 taskForm.titleField.addEventListener("input", (e) => validateForm(e.target));
-taskForm.titleField.addEventListener("blur-sm", (e) => validateForm(e.target));
+taskForm.titleField.addEventListener("blur-xs", (e) => validateForm(e.target));
 
 let titleValid = false;
 function validateForm(field) {
@@ -145,8 +145,8 @@ function renderTasksHTML({ id, title, description, dueDate, completed }) {
         <div class="flex gap-3 items-start">
         <div class="flex h-5 items-center">
     `;
-  !completed && (html += `<input onchange="updateCompletion(${id}, this)" name="completed" type="checkbox" title="Completed" class="h-4 w-4 rounded-sm border-gray-300 text-rose-600 focus:ring-rose-500" />`);
-  completed && (html += `<input onchange="updateCompletion(${id}, this)" name="completed" type="checkbox" title="Completed" checked class="h-4 w-4 rounded-sm border-gray-300 text-rose-600 focus:ring-rose-500" />`);
+  !completed && (html += `<input onchange="updateCompletion(${id}, this)" name="completed" type="checkbox" title="Completed" class="h-4 w-4 rounded-xs border-gray-300 text-rose-600 focus:ring-rose-500" />`);
+  completed && (html += `<input onchange="updateCompletion(${id}, this)" name="completed" type="checkbox" title="Completed" checked class="h-4 w-4 rounded-xs border-gray-300 text-rose-600 focus:ring-rose-500" />`);
   html += `
         </div>
         <details open class="w-full text-sm">
