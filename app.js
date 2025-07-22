@@ -83,7 +83,10 @@ app.post("/tasks", async (req, res) => {
       newTaskId++;
     }
 
-    const newTask = { id: newTaskId, ...req.body };
+    const sanitizedBody = Object.fromEntries(
+      Object.entries(req.body).map(([key, value]) => [key, escape(value)])
+    );
+    const newTask = { id: newTaskId, ...sanitizedBody };
     const newList = currentTasks ? [...currentTasks, newTask] : [newTask];
 
     await fs.writeFile("./tasks.json", JSON.stringify(newList));
