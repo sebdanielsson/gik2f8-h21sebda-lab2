@@ -57,7 +57,7 @@ app.get("/tasks/:id", async (req, res) => {
     const task = currentTasks.find((task) => task.id == req.params.id);
 
     if (!task) {
-      res.status(404).send("Task id " + req.params.id + " not found.");
+      res.status(404).send("Task id " + escape(req.params.id) + " not found.");
     }
 
     res.send(task);
