@@ -1,6 +1,7 @@
 import express from "express";
 import fs from "fs/promises";
 import { rateLimit } from 'express-rate-limit'
+import escape from "escape-html";
 
 const app = express();
 const port = process.env.PORT || 80;
@@ -128,7 +129,7 @@ app.delete("/tasks/:id", async (req, res) => {
     } else {
       const newList = currentTasks.filter((task) => task.id != req.params.id);
       await fs.writeFile("./tasks.json", JSON.stringify(newList));
-      res.send("Task id " + req.params.id + " deleted.");
+      res.send("Task id " + escape(req.params.id) + " deleted.");
     }
   } catch (err) {
     log("Exception occurred", err.stack);
